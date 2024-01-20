@@ -37,14 +37,18 @@ export class App extends Component {
       number,
     };
 
-    const enterContacts = this.state.contacts.some(
-      i => i.name === contact.name.toLowerCase() && i.number === contact.number
+    const isExists = this.state.contacts.some(
+      i =>
+        i.name.toLowerCase() === contact.name.toLowerCase() &&
+        i.number === contact.number
     );
-    enterContacts
-      ? alert(`${name} or ${number} is already in contacts`)
-      : this.setState(({ contacts }) => ({
-          contacts: [contact, ...contacts],
-        }));
+    if (isExists) {
+      alert(`${name} or ${number} is already in contacts`);
+      return;
+    }
+    this.setState(({ contacts }) => ({
+      contacts: [contact, ...contacts],
+    }));
   };
 
   changeFilterInput = e => {
