@@ -38,9 +38,7 @@ export class App extends Component {
     };
 
     const isExists = this.state.contacts.some(
-      i =>
-        i.name.toLowerCase() === contact.name.toLowerCase() &&
-        i.number === contact.number
+      i => i.name.toLowerCase() === contact.name.toLowerCase()
     );
     if (isExists) {
       alert(`${name} or ${number} is already in contacts`);
